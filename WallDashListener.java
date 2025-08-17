@@ -18,7 +18,6 @@ public class WallDashListener implements Listener {
         if(e.getAction() != Action.LEFT_CLICK_AIR && e.getAction() != Action.LEFT_CLICK_BLOCK) return;
 
         Player player = e.getPlayer();
-        BendingPlayer bplayer = BendingPlayer.getBendingPlayer(player);
 
         new WallDash(player);
     }
