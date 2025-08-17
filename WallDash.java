@@ -1,6 +1,7 @@
 package me.wither.walldashh;
 
 import com.projectkorra.projectkorra.BendingPlayer;
+import com.projectkorra.projectkorra.Element;
 import com.projectkorra.projectkorra.GeneralMethods;
 import com.projectkorra.projectkorra.ProjectKorra;
 import com.projectkorra.projectkorra.ability.*;
@@ -89,7 +90,7 @@ public class WallDash extends ChiAbility implements AddonAbility, Listener {
         direction = player.getLocation().getDirection().normalize().clone().multiply(1);
 
 
-        if(ReadytoDo(player, bPlayer) && !isFacingWall()){
+        if(ReadytoDo(player, bPlayer) && !isFacingWall() && bPlayer.canBind(this)){
 
             ParticleEffect.CLOUD.display(player.getLocation(), 5, Math.random(), 0, Math.random(), 0.0);
             player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.3f);
@@ -168,7 +169,7 @@ public class WallDash extends ChiAbility implements AddonAbility, Listener {
 
 
 
-        if (!bPlayer.isToggled()) {
+        if (!bPlayer.isToggled() || !bPlayer.canBind(this)) {
             remove();
             return;
         }
@@ -248,7 +249,7 @@ public class WallDash extends ChiAbility implements AddonAbility, Listener {
 
     @Override
     public String getVersion() {
-        return "1.1.0";
+        return "1.1.5";
     }
 
     public String getDescription() {
